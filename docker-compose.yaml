@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ds-portofolio
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  
+  adminer:
+    image: dpage/pgadmin4 
+    container_name: admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com 
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:8080"
+      - "80:80"
+
+volumes:
+  data:
